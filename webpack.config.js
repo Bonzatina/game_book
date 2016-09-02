@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
@@ -15,7 +16,8 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new ExtractTextPlugin('main_area.css')
     ],
     module: {
         preLoaders: [ //добавили ESlint в preloaders
@@ -35,7 +37,8 @@ module.exports = {
                 ],
                 test: /\.js$/,
                 plugins: ['transform-runtime'],
-            }
+            },
+            { test: /\.css$/, loader: ExtractTextPlugin.extract('css-loader?module!cssnext-loader') }
         ]
     }
 }
