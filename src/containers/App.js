@@ -10,14 +10,11 @@ class App extends Component {
     render() {
         const dice = Math.floor(Math.random()*11 + 2);
 
-        const p_id = this.props.game.p_id;
-        const {attack, defence, hits, speed} = this.props.game.stats;
+
+        const {p_id, stats} = this.props.game;
         const {setParagraph}  = this.props.gameActions;
         return <Main_area
-            attack={attack}
-            defence={defence}
-            hits={hits}
-            speed={speed}
+            stats={stats}
             p_id={p_id}
             setParagraph={setParagraph}
             dice={dice}

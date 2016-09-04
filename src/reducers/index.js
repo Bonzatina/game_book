@@ -4,7 +4,7 @@ const initialState = {
         attack: 10,
         defence: 10,
         hits: 10,
-        speed: 10
+        speed: 8
     }
 };
 
