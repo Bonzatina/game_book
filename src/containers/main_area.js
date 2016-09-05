@@ -8,12 +8,14 @@ class Main_area extends Component {
         this.props.setParagraph(+e.target.value ? +e.target.value : p_id)
     }
     render() {
-        let p_id = this.props.p_id;
-        let stats = this.props.stats;
+        let p_id = this.props.state.p_id;
+        let state = this.props.state;
         let new_p_id = ::this.onParBtnClick;
+
+        let setEnemy = this.props.setEnemy;
         return <div className='ooo'>
             <div onClick={new_p_id}>{Paragraphes[p_id].p_text}</div>
-            {Paragraphes[p_id].battle ? <Battle p_id={p_id} stats={stats}/> : null}
+            {Paragraphes[p_id].battle ? <Battle  state={state} setEnemy={setEnemy}/> : null}
         </div>
     }
 }

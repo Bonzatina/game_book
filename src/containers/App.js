@@ -11,12 +11,12 @@ class App extends Component {
         const dice = Math.floor(Math.random()*11 + 2);
 
 
-        const {p_id, stats} = this.props.game;
-        const {setParagraph}  = this.props.gameActions;
+        const state = this.props.state;
+        const {setParagraph, setEnemy}  = this.props.gameActions;
         return <Main_area
-            stats={stats}
-            p_id={p_id}
+            state={state}
             setParagraph={setParagraph}
+            setEnemy={setEnemy}
             dice={dice}
         />
 
@@ -25,7 +25,7 @@ class App extends Component {
 
 function mapStateToProps (state) {
     return {
-        game: state
+        state: state
     }
 }
 

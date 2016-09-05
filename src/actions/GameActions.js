@@ -6,3 +6,12 @@ export function setParagraph(p_id) {
     }
 
 }
+
+export function setEnemy(enemy) {
+
+    return {
+        type: 'SET_ENEMY',
+        enemy
+    }
+
+}
