@@ -12,11 +12,10 @@ class App extends Component {
 
 
         const state = this.props.state;
-        const {setParagraph, setEnemy}  = this.props.gameActions;
+        const gameActions  = this.props.gameActions;
         return <Main_area
             state={state}
-            setParagraph={setParagraph}
-            setEnemy={setEnemy}
+            gameActions={gameActions}
             dice={dice}
         />
 

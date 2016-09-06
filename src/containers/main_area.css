@@ -13,10 +13,11 @@ body {
     background-color: #5C75B0;
     border: 1px solid #E3E3E3;
 }
-.ooo{
+.paragraph_area{
     border: 1px solid #E3E3E3;
     margin: 5%;
     margin-right: 200px;
+    padding: 10px;
 }
 .nob {
     display: none;
