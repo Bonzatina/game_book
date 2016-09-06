@@ -8,15 +8,12 @@ import * as gameActions from '../actions/GameActions'
 
 class App extends Component {
     render() {
-        const dice = Math.floor(Math.random()*11 + 2);
-
 
         const state = this.props.state;
         const gameActions  = this.props.gameActions;
         return <Main_area
             state={state}
             gameActions={gameActions}
-            dice={dice}
         />
 
     }

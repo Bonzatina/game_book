@@ -3,9 +3,9 @@ const initialState = {
     first_strike_is: false,
     stats: {
         attack: 8,
-        defence: 16,
-        hits: 10,
-        speed: 5
+        defence: 15,
+        hits: 14,
+        speed: 10
     }
 };
 

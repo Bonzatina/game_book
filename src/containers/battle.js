@@ -4,6 +4,7 @@ import Paragraphes from './paragraphes'
 class Battle extends Component {
 
     onStartFightBtnClick() {
+
         let p_id = this.props.state.p_id;
 
         let enemy_hits = Paragraphes[p_id].enemy.hits;
@@ -12,7 +13,6 @@ class Battle extends Component {
         let enemy_speed = Paragraphes[p_id].enemy.speed;
         let enemy_name = Paragraphes[p_id].enemy.name;
 
-
         let char_speed = this.props.state.stats.speed;
         let first_strike_is = (char_speed+Math.floor(Math.random()*11 + 2)) - (enemy_speed+Math.floor(Math.random()*11 + 2))
 
@@ -20,9 +20,9 @@ class Battle extends Component {
             first_strike_is: first_strike_is,
 
             enemy: {
-                hits: enemy_hits,
                 attack: enemy_attack,
                 defence: enemy_defence,
+                hits: enemy_hits,
                 speed: enemy_speed,
                 name: enemy_name
             },
@@ -32,15 +32,14 @@ class Battle extends Component {
 
     onFightRoundBtnClick () {
 
-
-
         let attacker = this.props.state.first_strike_is > 0 ? this.props.state.stats : this.props.state.enemy;
         let defender = attacker == this.props.state.stats ? this.props.state.enemy : this.props.state.stats;
 
         let attack_round = (attacker.attack + Math.floor(Math.random()*11 + 2)) > defender.defence ? -2 : 0;
-        let defence_round = (defender.attack + Math.floor(Math.random()*11 + 2)) > attacker.defence ? -2 : 0;
+        let defence_round = ((defender.hits > 0) && (defender.attack + Math.floor(Math.random()*11 + 2)) > attacker.defence) ? -2 : 0;
         let round_results_attack = defender.hits + attack_round;
         let round_results_defence = attacker.hits + defence_round;
+
         let my_hits = this.props.state.first_strike_is > 0 ? round_results_defence : round_results_attack;
         let enemy_hits = this.props.state.first_strike_is > 0 ? round_results_attack : round_results_defence;
 
@@ -52,6 +51,7 @@ class Battle extends Component {
     }
 
     render() {
+
         let p_id = this.props.state.p_id;
     console.log( this.props.state.stats.hits);
         let first_strike = ::this.onStartFightBtnClick;
@@ -65,7 +65,7 @@ class Battle extends Component {
             {this.props.state.first_strike_is < 0 ?
                 <div>Результат: {this.props.state.first_strike_is} <br/>{this.props.state.enemy.name} получил право  первого удара</div> : null}
             {this.props.state.first_strike_is ? <div>
-                {(this.props.state.enemy && this.props.state.stats.hits>0 && this.props.state.enemy.hits>0) && <button onClick={figth_round}>раунд: {this.props.state.round}</button>} <br/>
+                {(this.props.state.enemy && this.props.state.stats.hits > 0 && this.props.state.enemy.hits > 0) && <button onClick={figth_round}>раунд: {this.props.state.round}</button>} <br/>
                 <p>Ваша жизнь: {this.props.state.stats.hits}   Противник: {this.props.state.enemy.hits} </p>
                  </div>: null}
             {this.props.state.stats.hits < 1 && <p>Вы погибли</p>}

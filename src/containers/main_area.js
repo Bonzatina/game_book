@@ -13,10 +13,9 @@ class Main_area extends Component {
         let gameActions  = this.props.gameActions;
         let new_p_id = ::this.onParBtnClick;
 
-
         return <div className='paragraph_area'>
             <div onClick={new_p_id}>{Paragraphes[p_id].p_text}</div>
-            {Paragraphes[p_id].battle ? <Battle  state={state} gameActions={gameActions}/> : null}
+            {typeof Paragraphes[p_id].battle !== 'undefined' ? <Battle  state={state} gameActions={gameActions}/> : null}
         </div>
     }
 }
