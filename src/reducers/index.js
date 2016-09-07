@@ -1,5 +1,5 @@
 const initialState = {
-    p_id: 5,
+    p_id: 1,
     first_strike_is: false,
     stats: {
         attack: 8,
