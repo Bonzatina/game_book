@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Paragraphes from './paragraphes'
-import Battle from './battle'
+import BattleContainer from './battleContainer'
 
 class Main_area extends Component {
     onParBtnClick(e) {
@@ -17,7 +17,7 @@ class Main_area extends Component {
 
         return <div className='paragraph_area'>
             <div onClick={new_p_id}>{Paragraphes[p_id].p_text}</div>
-            {typeof Paragraphes[p_id].battle !== 'undefined' ? <Battle  state={state} gameActions={gameActions}/> : null}
+            {typeof Paragraphes[p_id].battle !== 'undefined' ? <BattleContainer  state={state} gameActions={gameActions}/> : null}
         </div>
     }
 }

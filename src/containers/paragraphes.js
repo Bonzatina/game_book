@@ -216,13 +216,13 @@ let Paragraphes = [
         Инициатива 8<br />
         </div>,
         battle: true,
-        enemy: {
+        enemy: [{
             attack: 7,
             defence: 14,
             hits: 8,
-            speed: 8,
+            fight_queue: 8 + Math.floor(Math.random()*11 + 2),
             name: 'НЕЗНАКОМЕЦ'
-        },
+        }],
         p_text_afterBattle: <div>С последним ударом противник оступается и падает на землю. Вы наносите
         быстрый удар, но он приходится плашмя. Впрочем, этого оказывается достаточно,
         чтобы незнакомец потерял сознание. Убедившись, что он не шевелится, вы
@@ -313,7 +313,7 @@ let Paragraphes = [
             Защита 13<br/>
             Жизнь 7<br/>
             Инициатива 6<br/>
-            <p>3-ИЙ БРОДЯГАM</p>
+            <p>3-ИЙ БРОДЯГА</p>
             Нападение 6<br/>
             Защита 14<br/>
             Жизнь 8<br/>
@@ -330,14 +330,14 @@ let Paragraphes = [
                 attack: 7,
                 defence: 13,
                 hits: 8,
-                speed: 7,
+                fight_queue: 7 + Math.floor(Math.random()*11 + 2),
                 name: '1-ЫЙ БРОДЯГА'
             },
             {
                 attack: 6,
                 defence: 13,
                 hits: 7,
-                speed: 6,
+                fight_queue: 6 + Math.floor(Math.random()*11 + 2),
                 name: '2-ОЙ БРОДЯГА'
 
             },
@@ -345,14 +345,14 @@ let Paragraphes = [
                 attack: 6,
                 defence: 14,
                 hits: 8,
-                speed: 8,
+                fight_queue: 8 + Math.floor(Math.random()*11 + 2),
                 name: '3-ИЙ БРОДЯГА'
             },
             {
                 attack: 6,
                 defence: 14,
                 hits: 8,
-                speed: 8,
+                fight_queue: 8 + Math.floor(Math.random()*11 + 2),
                 name: '4-ЫЙ БРОДЯГА'
             }
         ],

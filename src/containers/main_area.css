@@ -22,3 +22,15 @@ body {
 .nob {
     display: none;
 }
+
+.battle{
+    border: 1px solid #E3E3E3;
+    background-color: #f0f0f0;
+}
+/*.paragraph_area::first-letter {*/
+    /*float: left;*/
+    /*font-size: 2em;*/
+    /*font-weight: bold;*/
+    /*font-family: cursive;*/
+    /*padding-right: 2px;*/
+/*}*/

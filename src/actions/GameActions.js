@@ -6,11 +6,11 @@ export function setParagraph(p_id) {
     }
 }
 
-export function setEnemy({first_strike_is, enemy, round}) {
+export function setEnemy({fight_queue, enemy, round}) {
 
     return {
         type: 'SET_ENEMY',
-        first_strike_is: first_strike_is,
+        fight_queue: fight_queue,
         enemy: enemy,
         round: round
     }
