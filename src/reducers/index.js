@@ -22,6 +22,9 @@ export default function gameState(state = initialState, action) {
         case 'FIGHT_ROUND':
             return  Object.assign({}, state, {stats: {...state.stats, hits: action.my_hits}, enemy: {...state.enemy, hits: action.enemy_hits}, round: action.newRound}) ;
 
+        case 'KICK':
+            return  Object.assign({}, state, {enemy: [...state.enemy,  {enemy : {...state.enemy[0], hits: action.enemy_hits}}], round: action.newRound}) ;
+
         default:
             return state;
     }

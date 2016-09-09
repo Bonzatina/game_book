@@ -44,7 +44,7 @@ class BattleContainer extends Component {
         let newRound = round+1;
 
             console.log('at_at ' + attacker.attack, round_results_attack, 'def_at '+ defender.attack, round_results_defence );
-        this.props.gameActions.fightRound( my_hits, enemy_hits, newRound);
+        this.props.gameActions.kickEnemy( 3, newRound);
     }
 
     render() {

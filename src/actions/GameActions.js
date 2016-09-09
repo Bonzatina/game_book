@@ -25,3 +25,14 @@ export function fightRound(my_hits, enemy_hits, newRound) {
         newRound
     }
 }
+
+export function kickEnemy( enemy_hits, newRound) {
+
+    return {
+        type: 'KICK',
+
+        enemy_hits,
+        newRound
+
+    }
+}

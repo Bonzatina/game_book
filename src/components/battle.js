@@ -9,6 +9,7 @@ class Battle extends Component {
         let startFight = this.props.startFight;
         let figth_round = this.props.figth_round;
         let enemies = this.props.enemies;
+        console.log(enemies);
 
         return <div className='battle'>
 
@@ -18,8 +19,8 @@ class Battle extends Component {
             {this.props.state.stats.fight_queue != false ?
                 <div>Результаты бросков инициативы:
                     <p>{this.props.state.stats.name}: {this.props.state.stats.fight_queue}</p>
-                    {  enemies.map(function (enemy) {
-                        return <p>{enemy.name}: {enemy.fight_queue}</p>;
+                    {  enemies.map(function (enemy, index) {
+                        return <p key={index}>{enemy.name}: {enemy.fight_queue}</p>;
                     })
                     }</div> : null}
 
@@ -27,8 +28,8 @@ class Battle extends Component {
                 <div>
                 <button onClick={figth_round}>раунд: {this.props.state.round}</button> <br/>
                 <p>Ваша жизнь: {this.props.state.stats.hits}</p>
-                {  enemies.map(function (enemy) {
-                    return <li>{enemy.name}: {enemy.hits}</li>;
+                {  enemies.map(function (enemy, index) {
+                    return <li key={index}>{enemy.name}: {enemy.hits}</li>;
                 })
                 }
             </div>: null}
