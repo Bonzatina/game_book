@@ -20,7 +20,7 @@ class Battle extends Component {
                 <div>Результаты бросков инициативы:
                     <p>{this.props.state.stats.name}: {this.props.state.stats.fight_queue}</p>
                     {  enemies.map(function (enemy, index) {
-                        return <p key={index}>{enemy.name}: {enemy.fight_queue}</p>;
+                        return <p key={enemy.name}>{enemy.name}: {enemy.fight_queue}</p>;
                     })
                     }</div> : null}
 
@@ -29,7 +29,7 @@ class Battle extends Component {
                 <button onClick={figth_round}>раунд: {this.props.state.round}</button> <br/>
                 <p>Ваша жизнь: {this.props.state.stats.hits}</p>
                 {  enemies.map(function (enemy, index) {
-                    return <li key={index}>{enemy.name}: {enemy.hits}</li>;
+                    return <li key={enemy.name}>{enemy.name}: {enemy.hits}</li>;
                 })
                 }
             </div>: null}

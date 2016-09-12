@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Paragraphes from './paragraphes'
 import Battle from '../components/battle'
+import set from 'lodash/set';
 
 class BattleContainer extends Component {
 
@@ -44,7 +45,11 @@ class BattleContainer extends Component {
         let newRound = round+1;
 
             console.log('at_at ' + attacker.attack, round_results_attack, 'def_at '+ defender.attack, round_results_defence );
-        this.props.gameActions.kickEnemy( 3, newRound);
+        let enemies = this.props.state.enemy;
+
+        set(enemies, '[0].hits', 3);
+
+        this.props.gameActions.kickEnemy( enemies, newRound);
     }
 
     render() {

@@ -1,3 +1,5 @@
+import set from 'lodash/set';
+
 const initialState = {
     p_id: 6,
 
@@ -17,13 +19,13 @@ export default function gameState(state = initialState, action) {
             return { ...state, p_id: action.p_id };
 
         case 'SET_ENEMY':
-            return Object.assign({}, state, {stats: {...state.stats, fight_queue: action.fight_queue}, enemy: action.enemy, round:action.round, first_strike_is: true}) ;
+            return Object.assign({}, state, {stats: {...state.stats, fight_queue: action.fight_queue}, enemy: action.enemy, round:action.round}) ;
 
         case 'FIGHT_ROUND':
             return  Object.assign({}, state, {stats: {...state.stats, hits: action.my_hits}, enemy: {...state.enemy, hits: action.enemy_hits}, round: action.newRound}) ;
 
         case 'KICK':
-            return  Object.assign({}, state, {enemy: [...state.enemy,  {enemy : {...state.enemy[0], hits: action.enemy_hits}}], round: action.newRound}) ;
+            return  Object.assign({}, state, {enemy: action.enemy_hits, round: action.newRound}) ;
 
         default:
             return state;
