@@ -58,10 +58,10 @@ class BattleContainer extends Component {
     console.log( this.props.state.stats.hits);
         let startFight = ::this.onStartFightBtnClick;
         let figth_round = ::this.onFightRoundBtnClick;
-        let enemies = this.props.state.enemy;
 
 
-        return <Battle state={this.props.state} gameActions={this.props.gameActions} startFight={startFight} figth_round={figth_round} enemies={enemies} />
+
+        return <Battle state={this.props.state} gameActions={this.props.gameActions} startFight={startFight} figth_round={figth_round}  />
     }
 }
 

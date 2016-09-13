@@ -1,32 +1,88 @@
-body {
 
+.main_area {
     display: flex;
-    align-items: center;
+    margin: 0;
+    padding: 0;
+    /*background: #ea8c8c;*/
+    list-style: none;
+    /*   flex-wrap: wrap; */
     justify-content: center;
-
+    align-items: stretch;
+    /*align-content: space-between;*/
 }
 
-:local(.main_area) {
-    color: red;
-    width: auto;
-    padding-top: 18px;
-    background-color: #5C75B0;
-    border: 1px solid #E3E3E3;
-}
 .paragraph_area{
     border: 1px solid #E3E3E3;
-    margin: 5%;
-    margin-right: 200px;
+    max-width: 70%;
     padding: 10px;
 }
-.nob {
-    display: none;
+
+.right_panel {
+    border: 1px solid #E3E3E3;
+    padding: 10px;
+    width: 200px;
+    background-color: #ced7d6;
 }
 
 .battle{
+    width: 70%;
+    min-height: 800px;
     border: 1px solid #E3E3E3;
     background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+
+    align-content: space-around;
 }
+
+.enemies {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 50%;
+    text-align: center;
+}
+
+.enemy {
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    background-color: #b48478;
+    padding: 5px;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+.inic_button{
+    align-self: center;
+    width: 80px;
+    height: 40px;
+}
+
+.char_area{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 50%;
+    text-align: center;
+}
+
+.char{
+    margin-bottom: 50px;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #719f8a;
+}
+
+.display_none {
+    display: none;
+}
+
 /*.paragraph_area::first-letter {*/
     /*float: left;*/
     /*font-size: 2em;*/

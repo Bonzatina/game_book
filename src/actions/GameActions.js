@@ -6,6 +6,13 @@ export function setParagraph(p_id) {
     }
 }
 
+export function startBattle(battle) {
+    return    {
+        type: 'START_BATTLE',
+        battle
+    }
+}
+
 export function setEnemy({fight_queue, enemy, round}) {
 
     return {

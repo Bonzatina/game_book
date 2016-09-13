@@ -18,6 +18,9 @@ export default function gameState(state = initialState, action) {
         case 'SET_PARAGRAPH':
             return { ...state, p_id: action.p_id };
 
+        case 'START_BATTLE':
+            return  Object.assign({}, state, {battle: action.battle});
+
         case 'SET_ENEMY':
             return Object.assign({}, state, {stats: {...state.stats, fight_queue: action.fight_queue}, enemy: action.enemy, round:action.round}) ;
 
