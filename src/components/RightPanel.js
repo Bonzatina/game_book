@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Paragraphes from '../containers/paragraphes'
+
 
 class RightPanel extends Component {
 

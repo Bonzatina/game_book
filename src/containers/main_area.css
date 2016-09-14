@@ -24,6 +24,29 @@
     background-color: #ced7d6;
 }
 
+.right_panel_battle{
+    border: 1px solid #E3E3E3;
+    background-color: #ced7d6;
+    padding: 10px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right_panel_battle__enemy {
+
+}
+
+.right_panel_battle__queue {
+
+}
+
+.right_panel_battle__char {
+
+}
+
 .battle{
     width: 70%;
     min-height: 800px;
@@ -58,6 +81,15 @@
     align-self: center;
     width: 80px;
     height: 40px;
+}
+
+.log_window {
+    align-self: center;
+    width: 450px;
+    height: 250px;
+    border-radius: 10px;
+    background-color: #ced7d6;
+    padding: 10px;
 }
 
 .char_area{

@@ -1,31 +1,44 @@
 import React, { Component } from 'react'
-import Paragraphes from './paragraphes'
+
 import Battle from '../components/battle'
 import set from 'lodash/set';
 
 class BattleContainer extends Component {
 
-    onStartFightBtnClick() {
+    fullFightQueue (enemies, char) {
 
-        let p_id = this.props.state.p_id;
+        let fullFightQueue = enemies.slice();
+        fullFightQueue.push(char);
 
-        let enemies = Paragraphes[p_id].enemy;
+        function compareQueue(enemyA, enemyB) {
+            return enemyB.fight_queue - enemyA.fight_queue;
+        }
+
+        return fullFightQueue.sort(compareQueue);
+    }
+
+    onSetQueueBtnClick() {
+
+        let battle = this.props.state.battle;
+
+        let enemies = battle.enemies;
+
+        let charQueue = this.props.state.stats.speed + Math.floor(Math.random()*11 + 2);
+        let charWithQueue = Object.assign({}, this.props.state.stats, {fight_queue: charQueue} );
 
 
-        let char_speed = this.props.state.stats.speed;
-        let fight_queue = char_speed+Math.floor(Math.random()*11 + 2);
-
-
-        //for (let i; i<enemies.length; i++) {
-        //
-        //};
-
-        this.props.gameActions.setEnemy({
-            fight_queue: fight_queue,
-
-            enemy: enemies,
-            round: 1
+        let enemiesWithQueue = enemies.map(function (enemy) {
+            return Object.assign({}, enemy, {fight_queue: enemy.speed + Math.floor(Math.random()*11 + 2)})
         });
+
+
+        let fullFightQueue = this.fullFightQueue(enemiesWithQueue, charWithQueue);
+        let fullFightQueueNames = fullFightQueue.map(function(fighter){
+            return {name: fighter.name, fight_queue: fighter.fight_queue}
+        });
+        let battleWithQueue= {enemies: enemiesWithQueue, fullFightQueueNames: fullFightQueueNames};
+
+        this.props.gameActions.setQueue(battleWithQueue, charQueue);
     }
 
     onFightRoundBtnClick () {
@@ -38,8 +51,8 @@ class BattleContainer extends Component {
         let round_results_attack = defender.hits + attack_round;
         let round_results_defence = attacker.hits + defence_round;
 
-        let my_hits = this.props.state.first_strike_is > 0 ? round_results_defence : round_results_attack;
-        let enemy_hits = this.props.state.first_strike_is > 0 ? round_results_attack : round_results_defence;
+       // let my_hits = this.props.state.first_strike_is > 0 ? round_results_defence : round_results_attack;
+     //   let enemy_hits = this.props.state.first_strike_is > 0 ? round_results_attack : round_results_defence;
 
         let round = this.props.state.round;
         let newRound = round+1;
@@ -54,14 +67,18 @@ class BattleContainer extends Component {
 
     render() {
 
-
     console.log( this.props.state.stats.hits);
-        let startFight = ::this.onStartFightBtnClick;
+        let setQueue = ::this.onSetQueueBtnClick;
         let figth_round = ::this.onFightRoundBtnClick;
 
 
 
-        return <Battle state={this.props.state} gameActions={this.props.gameActions} startFight={startFight} figth_round={figth_round}  />
+
+        return <Battle state={this.props.state}
+                       gameActions={this.props.gameActions}
+                       setQueue={setQueue}
+                       figth_round={figth_round}
+                        />
     }
 }
 

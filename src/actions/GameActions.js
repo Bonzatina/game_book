@@ -13,13 +13,12 @@ export function startBattle(battle) {
     }
 }
 
-export function setEnemy({fight_queue, enemy, round}) {
+export function setQueue(battle, charQueue) {
 
     return {
-        type: 'SET_ENEMY',
-        fight_queue: fight_queue,
-        enemy: enemy,
-        round: round
+        type: 'SET_QUEUE',
+        battle,
+        charQueue
     }
 }
 

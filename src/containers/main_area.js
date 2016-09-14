@@ -9,15 +9,11 @@ class Main_area extends Component {
         this.props.gameActions.setParagraph( typeof e.target.value !== 'undefined' ? e.target.value : p_id)
     }
 
-    onStartFightBtnClick() {
+    onStartBattleClick() {
 
         let p_id = this.props.state.p_id;
 
         let enemies = Paragraphes[p_id].enemy;
-
-
-        let char_speed = this.props.state.stats.speed;
-        let fight_queue = char_speed+Math.floor(Math.random()*11 + 2);
 
         let battle = {
             enemies: enemies
@@ -30,20 +26,21 @@ class Main_area extends Component {
         let p_id = this.props.state.p_id;
         let state = this.props.state;
         let gameActions  = this.props.gameActions;
-        let new_p_id = ::this.onParBtnClick;
-        let start_battle = ::this.onStartFightBtnClick;
+
+        let setNewP_id = ::this.onParBtnClick;
+        let startBattle = ::this.onStartBattleClick;
 
 
         return <div className='main_area'>
 
         <div className='paragraph_area'>
-            <div onClick={new_p_id}>{typeof this.props.state.battle === 'undefined' ? Paragraphes[p_id].p_text : null}</div>
+            <div onClick={setNewP_id}>{typeof this.props.state.battle === 'undefined' ? Paragraphes[p_id].p_text : null}</div>
 
-            {typeof Paragraphes[p_id].battle !== 'undefined' && typeof this.props.state.battle === 'undefined' ?   <button onClick={start_battle}>Начать бой</button>  : null}
+            {typeof Paragraphes[p_id].battle !== 'undefined' && typeof this.props.state.battle === 'undefined' ?   <button onClick={startBattle}>Начать бой</button>  : null}
 
         </div>
             {typeof this.props.state.battle !== 'undefined' ? <BattleContainer state={state} gameActions={gameActions}/> : null}
-            <RightPanelContainer />
+            <RightPanelContainer state={state} gameActions={gameActions} />
             </div>
     }
 }

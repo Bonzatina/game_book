@@ -21,3 +21,16 @@
 
 {this.props.state.stats.hits < 1 && <p>Вы погибли</p>}
 {(this.props.state.enemy && this.props.state.enemy.hits < 1) && <div>{Paragraphes[p_id].p_text_afterBattle}</div>}
+
+
+fullFightQueue (enemies, char) {
+
+    let rr = enemies.slice();
+    rr.push(char);
+
+    function compareQueue(enemyA, enemyB) {
+        return enemyB.fight_queue - enemyA.fight_queue;
+    }
+    let fullFightQueue = rr.sort(compareQueue);
+    return fullFightQueue
+}

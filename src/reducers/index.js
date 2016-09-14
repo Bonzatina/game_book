@@ -1,4 +1,4 @@
-import set from 'lodash/set';
+
 
 const initialState = {
     p_id: 6,
@@ -21,8 +21,8 @@ export default function gameState(state = initialState, action) {
         case 'START_BATTLE':
             return  Object.assign({}, state, {battle: action.battle});
 
-        case 'SET_ENEMY':
-            return Object.assign({}, state, {stats: {...state.stats, fight_queue: action.fight_queue}, enemy: action.enemy, round:action.round}) ;
+        case 'SET_QUEUE':
+            return Object.assign({}, state, {battle: action.battle}, {stats: {...state.stats, fight_queue: action.charQueue}}) ;
 
         case 'FIGHT_ROUND':
             return  Object.assign({}, state, {stats: {...state.stats, hits: action.my_hits}, enemy: {...state.enemy, hits: action.enemy_hits}, round: action.newRound}) ;

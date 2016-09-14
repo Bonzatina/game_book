@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
-import Paragraphes from './paragraphes'
+
 import RightPanel from '../components/RightPanel'
+import RightPanelBattle from '../components/RightPanelBattle'
 
 class RightPanelContainer extends Component {
     render() {
 
-        return <RightPanel />
+        let state = this.props.state;
+        let gameActions  = this.props.gameActions;
+
+        return  typeof this.props.state.battle === 'undefined' ? <RightPanel state={state} gameActions={gameActions} /> : <RightPanelBattle state={state} gameActions={gameActions} />
     }
 }
 

@@ -220,7 +220,7 @@ let Paragraphes = [
             attack: 7,
             defence: 14,
             hits: 8,
-            fight_queue: 8 + Math.floor(Math.random()*11 + 2),
+            speed: 8,
             name: 'НЕЗНАКОМЕЦ'
         }],
         p_text_afterBattle: <div>С последним ударом противник оступается и падает на землю. Вы наносите
@@ -285,14 +285,14 @@ let Paragraphes = [
                 attack: 7,
                 defence: 13,
                 hits: 8,
-                fight_queue: 7 + Math.floor(Math.random()*11 + 2),
+                speed: 7,
                 name: '1-ый бродяга'
             },
             {
                 attack: 6,
                 defence: 13,
                 hits: 7,
-                fight_queue: 6 + Math.floor(Math.random()*11 + 2),
+                speed: 6,
                 name: '2-ой бродяга'
 
             },
@@ -300,14 +300,14 @@ let Paragraphes = [
                 attack: 6,
                 defence: 14,
                 hits: 8,
-                fight_queue: 8 + Math.floor(Math.random()*11 + 2),
+                speed: 8,
                 name: '3-ий бродяга'
             },
             {
                 attack: 6,
                 defence: 14,
                 hits: 8,
-                fight_queue: 8 + Math.floor(Math.random()*11 + 2),
+                speed: 8,
                 name: '4-ый бродяга'
             }
         ],
