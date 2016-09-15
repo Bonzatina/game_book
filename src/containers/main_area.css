@@ -77,6 +77,10 @@
     border-radius: 10px;
 }
 
+.current_fighter{
+    border: 1px solid;
+}
+
 .inic_button{
     align-self: center;
     width: 80px;

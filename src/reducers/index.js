@@ -4,8 +4,8 @@ const initialState = {
     p_id: 6,
 
     stats: {
-        attack: 8,
-        defence: 15,
+        attack: 18,
+        defence: 5,
         hits: 14,
         speed: 10,
         fight_queue: false,
@@ -23,6 +23,9 @@ export default function gameState(state = initialState, action) {
 
         case 'SET_QUEUE':
             return Object.assign({}, state, {battle: action.battle}, {stats: {...state.stats, fight_queue: action.charQueue}}) ;
+
+        case 'GET_KICK':
+            return Object.assign({}, state, {battle: action.nextStateOfBattle}) ;
 
         case 'FIGHT_ROUND':
             return  Object.assign({}, state, {stats: {...state.stats, hits: action.my_hits}, enemy: {...state.enemy, hits: action.enemy_hits}, round: action.newRound}) ;

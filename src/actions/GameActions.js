@@ -22,6 +22,14 @@ export function setQueue(battle, charQueue) {
     }
 }
 
+export function getKick(nextStateOfBattle) {
+
+    return {
+        type: 'GET_KICK',
+        nextStateOfBattle
+    }
+}
+
 export function fightRound(my_hits, enemy_hits, newRound) {
 
     return {
