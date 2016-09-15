@@ -50,12 +50,20 @@ class BattleContainer extends Component {
 
 
         let char = this.props.state.stats;
+        let fighting_char = find(fight_queue, char.name) || char;
+
+        function find(array, value) {
+
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].name == value) return Object.assign({}, array[i], {index: i});
+            }
+        }
 
 
        // console.log(fight_queue);
 
         let attacker = fight_queue[current_queue];
-        let defender = attacker.name === char.name ? fight_queue[enemy_index] : char;
+        let defender = fight_queue[enemy_index];
 
         let attack_round = (attacker.attack + Math.floor(Math.random()*11 + 2)) > defender.defence ? -2 : 0;
 

@@ -18,12 +18,10 @@ class Battle extends Component {
         function find(array, value) {
 
             for (var i = 0; i < array.length; i++) {
-                if (array[i].name == value) return array[i];
+                if (array[i].name == value) return Object.assign({}, array[i], {index: i});
             }
-
-            return array[i];
         }
-        console.log(fighting_char.index);
+       // console.log(fighting_char);
 
         return <div className='battle'>
                 <div className='enemies'>
