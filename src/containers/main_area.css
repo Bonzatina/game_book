@@ -1,4 +1,15 @@
 
+@media (max-width: 1000px) {
+
+    body {
+        font-size: larger;
+    }
+    button{
+        font-size: xx-large;
+        color: #173a0b;
+    }
+}
+
 .main_area {
     display: flex;
     margin: 0;
@@ -9,7 +20,11 @@
     justify-content: center;
     align-items: stretch;
     /*align-content: space-between;*/
-    width: 600px;
+
+}
+
+.p_button{
+    display: inline;
 }
 
 .paragraph_area{
