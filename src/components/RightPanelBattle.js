@@ -12,7 +12,7 @@ class RightPanelBattle extends Component {
         return <div className='right_panel_battle'>
             <div className='right_panel_battle__enemy'>{enemies[0].name}</div>
 
-            <div className='right_panel_battle__queue'>{this.props.state.stats.fight_queue !== false ?
+            <div className='right_panel_battle__queue'>{current_queue !== false ?
                 <div>Результаты бросков инициативы:
 
                     {  enemies.map(function (fighter, index) {

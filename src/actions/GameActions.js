@@ -1,8 +1,9 @@
-export function setParagraph(p_id) {
+export function setParagraph(p_id, battle_is_over) {
 
     return {
         type: 'SET_PARAGRAPH',
-        p_id
+        p_id,
+        battle_is_over
     }
 }
 
@@ -13,12 +14,11 @@ export function startBattle(battle) {
     }
 }
 
-export function setQueue(battle, charQueue) {
+export function setQueue(battle) {
 
     return {
         type: 'SET_QUEUE',
-        battle,
-        charQueue
+        battle
     }
 }
 
@@ -30,13 +30,13 @@ export function getKick(nextStateOfBattle) {
     }
 }
 
-export function fightRound(my_hits, enemy_hits, newRound) {
+export function battleIsOver(my_hits, battle, battle_is_over) {
 
     return {
-        type: 'FIGHT_ROUND',
+        type: 'BATTLE_IS_OVER',
         my_hits,
-        enemy_hits,
-        newRound
+        battle,
+        battle_is_over
     }
 }
 

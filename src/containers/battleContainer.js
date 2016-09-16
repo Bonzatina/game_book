@@ -3,40 +3,29 @@ import React, { Component } from 'react'
 import Battle from '../components/battle'
 import set from 'lodash/set';
 
+
 class BattleContainer extends Component {
 
-    fullFightQueue (enemies, char) {
-
-
-        enemies.push(char);
-
+    enemiesSortByQueue (enemies) {
         function compareQueue(enemyA, enemyB) {
             return enemyB.fight_queue - enemyA.fight_queue;
         }
-
         return enemies.sort(compareQueue);
     }
 
     onSetQueueBtnClick() {
 
-        let battle = this.props.state.battle;
+        let enemies = this.props.state.battle.enemies;
 
-        let enemies = battle.enemies;
-
-        let charQueue = this.props.state.stats.speed + Math.floor(Math.random()*11 + 2);
-        let charWithQueue = Object.assign({}, this.props.state.stats, {fight_queue: charQueue} );
-
-
-        let enemiesWithQueue = enemies.map(function (enemy) {
+        let enemiesWithSpeed = enemies.map(function (enemy) {
             return Object.assign({}, enemy, {fight_queue: enemy.speed + Math.floor(Math.random()*11 + 2)})
         });
 
+        let enemiesSortByQueue = this.enemiesSortByQueue(enemiesWithSpeed);
 
-        let fullFightQueue = this.fullFightQueue(enemiesWithQueue, charWithQueue);
+        let battleWithQueue= {enemies: enemiesSortByQueue, current_queue: 0, current_round: 1 };
 
-        let battleWithQueue= {enemies: fullFightQueue, current_queue: 0 };
-
-        this.props.gameActions.setQueue(battleWithQueue, charQueue);
+        this.props.gameActions.setQueue(battleWithQueue);
     }
 
     onGetKickBtnClick (e) {
@@ -48,17 +37,8 @@ class BattleContainer extends Component {
         let current_queue = this.props.state.battle.current_queue;
         let new_current_queue = current_queue < fight_queue.length-1 ? current_queue + 1 : 0;
 
-
-        let char = this.props.state.stats;
-        let fighting_char = find(fight_queue, char.name) || char;
-
-        function find(array, value) {
-
-            for (var i = 0; i < array.length; i++) {
-                if (array[i].name == value) return Object.assign({}, array[i], {index: i});
-            }
-        }
-
+        let current_round = this.props.state.battle.current_round;
+        let new_current_round = current_queue == fight_queue.length-1 ? current_round + 1 : current_round;
 
        // console.log(fight_queue);
 
@@ -67,23 +47,31 @@ class BattleContainer extends Component {
 
         let attack_round = (attacker.attack + Math.floor(Math.random()*11 + 2)) > defender.defence ? -2 : 0;
 
-
         let round_results = defender.hits + attack_round;
 
-
-
-console.log(attacker.name, defender.name, round_results);
+//console.log(attacker.name, defender.name, round_results);
 
        set(fight_queue, '['+enemy_index+'].hits', round_results);
 
-        let nextStateOfBattle= {enemies: fight_queue, current_queue: new_current_queue};
+        function findDead(array, value) {
 
-        this.props.gameActions.getKick(nextStateOfBattle);
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].hits < value) return array.splice(i, 1);
+            }
+        }
+
+        findDead(fight_queue, 1);
+
+        //  console.log(fight_queue.length-1 );
+
+        let nextStateOfBattle= {enemies: fight_queue, current_queue: new_current_queue, current_round: new_current_round};
+
+        fight_queue.length > 1 ? this.props.gameActions.getKick(nextStateOfBattle) : this.props.gameActions.battleIsOver(fight_queue[0].hits, undefined, true);
     }
 
     render() {
 
-  //  console.log( this.props.state.stats.hits);
+
         let setQueue = ::this.onSetQueueBtnClick;
         //let figth_round = ::this.onFightRoundBtnClick;
         let getKick = ::this.onGetKickBtnClick;
