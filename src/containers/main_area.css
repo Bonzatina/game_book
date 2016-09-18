@@ -1,12 +1,6 @@
 
 @media (max-width: 1000px) {
-
     body {
-        font-size: larger;
-    }
-    button{
-        font-size: xx-large;
-        color: #173a0b;
     }
 }
 
@@ -21,10 +15,6 @@
     align-items: stretch;
     /*align-content: space-between;*/
 
-}
-
-.p_button{
-    display: inline;
 }
 
 .paragraph_area{
@@ -105,7 +95,7 @@
 
 .log_window {
     align-self: center;
-    width: 450px;
+    width: 50%;
     height: 250px;
     border-radius: 10px;
     background-color: #ced7d6;

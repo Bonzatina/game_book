@@ -1,7 +1,7 @@
 
 
 const initialState = {
-    p_id: 0,
+    p_id: 1,
 
     stats: {
         attack: 18,
