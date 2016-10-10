@@ -4,10 +4,10 @@ import React, { Component } from 'react'
 class RightPanelBattle extends Component {
 
     render() {
-        let char = this.props.state.stats;
-        let enemies = this.props.state.battle.enemies;
+        let char = this.props.gameState.stats;
+        let enemies = this.props.gameState.battle.enemies;
 
-        let current_queue = this.props.state.battle.current_queue;
+        let current_queue = this.props.gameState.battle.current_queue;
 
         return <div className='right_panel_battle'>
             <div className='right_panel_battle__enemy'>{enemies[0].name}</div>

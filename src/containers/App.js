@@ -9,10 +9,10 @@ import * as gameActions from '../actions/GameActions'
 class App extends Component {
     render() {
 
-        const state = this.props.state;
+        const gameState = this.props.gameState;
         const gameActions  = this.props.gameActions;
         return <Main_area
-            state={state}
+            gameState={gameState}
             gameActions={gameActions}
         />
 
@@ -21,7 +21,7 @@ class App extends Component {
 
 function mapStateToProps (state) {
     return {
-        state: state
+        gameState: state
     }
 }
 

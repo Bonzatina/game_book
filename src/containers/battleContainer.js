@@ -15,7 +15,7 @@ class BattleContainer extends Component {
 
     onSetQueueBtnClick() {
 
-        let enemies = this.props.state.battle.enemies;
+        let enemies = this.props.gameState.battle.enemies;
 
         let enemiesWithSpeed = enemies.map(function (enemy) {
             return Object.assign({}, enemy, {fight_queue: enemy.speed + Math.floor(Math.random()*11 + 2)})
@@ -32,12 +32,12 @@ class BattleContainer extends Component {
 
         let enemy_index = e.target.value;
 
-        let fight_queue = this.props.state.battle.enemies;
+        let fight_queue = this.props.gameState.battle.enemies;
 
-        let current_queue = this.props.state.battle.current_queue;
+        let current_queue = this.props.gameState.battle.current_queue;
         let new_current_queue = current_queue < fight_queue.length-1 ? current_queue + 1 : 0;
 
-        let current_round = this.props.state.battle.current_round;
+        let current_round = this.props.gameState.battle.current_round;
         let new_current_round = current_queue == fight_queue.length-1 ? current_round + 1 : current_round;
 
        // console.log(fight_queue);
@@ -78,7 +78,7 @@ class BattleContainer extends Component {
 
 
 
-        return <Battle state={this.props.state}
+        return <Battle gameState={this.props.gameState}
                        gameActions={this.props.gameActions}
                        setQueue={setQueue}
                        getKick={getKick}

@@ -13,8 +13,26 @@
     /*   flex-wrap: wrap; */
     justify-content: center;
     align-items: stretch;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    height: 100%;
+    width: 100%;
     /*align-content: space-between;*/
 
+}
+
+.chit_button{
+    right: 0;
+    position: fixed;
+    background-color: grey;
+    width: 30px;
+    height: 30px;
+    opacity: 0.5;
+    border: 0;
+    border-radius: 3px;
+    margin-right: 3px;
 }
 
 .paragraph_area{
@@ -34,7 +52,7 @@
     border: 1px solid #E3E3E3;
     background-color: #ced7d6;
     padding: 10px;
-    width: 200px;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,12 +73,10 @@
 
 .battle{
     width: 70%;
-    min-height: 800px;
     border: 1px solid #E3E3E3;
     background-color: #f0f0f0;
     display: flex;
     flex-direction: column;
-
     align-content: space-around;
 }
 
@@ -95,7 +111,7 @@
 
 .log_window {
     align-self: center;
-    width: 50%;
+    width: 70%;
     height: 250px;
     border-radius: 10px;
     background-color: #ced7d6;

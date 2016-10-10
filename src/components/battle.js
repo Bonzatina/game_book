@@ -8,10 +8,10 @@ class Battle extends Component {
         let setQueue = this.props.setQueue;
         let getKick = this.props.getKick;
 
-        let current_queue = this.props.state.battle.current_queue;
-        let current_round = this.props.state.battle.current_round;
-        let enemies = this.props.state.battle.enemies;
-        let char = this.props.state.stats;
+        let current_queue = this.props.gameState.battle.current_queue;
+        let current_round = this.props.gameState.battle.current_round;
+        let enemies = this.props.gameState.battle.enemies;
+        let char = this.props.gameState.stats;
         let fighting_char = findChar(enemies, char.name);
 
 
@@ -24,10 +24,11 @@ class Battle extends Component {
         }
        // console.log(fighting_char);
 
-        return <div className='battle'>
+        return <div className='battle'> <button className="chit_button"></button>
                 <div className='enemies'>
                     {enemies.map(function (enemy, index) {
                     return enemy.name !== char.name ? <div key={index}> <div className='enemy' >{enemy.name}<br/> Жизнь: {enemy.hits}</div>
+                        <div>Атака: {enemy.attack}</div>
                         <div>Защита: {enemy.defence}</div>
                         <div>Скорость: {enemy.speed}</div>
                         { current_queue === fighting_char.index && current_queue !== false ? <button className='inic_button' value={index} onClick={getKick}>Атаковать! </button> : null}

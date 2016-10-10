@@ -6,10 +6,10 @@ import RightPanelBattle from '../components/RightPanelBattle'
 class RightPanelContainer extends Component {
     render() {
 
-        let state = this.props.state;
+        let gameState = this.props.gameState;
         let gameActions  = this.props.gameActions;
 
-        return  typeof this.props.state.battle === 'undefined' ? <RightPanel state={state} gameActions={gameActions} /> : <RightPanelBattle state={state} gameActions={gameActions} />
+        return  typeof this.props.gameState.battle === 'undefined' ? <RightPanel gameState={gameState} gameActions={gameActions} /> : <RightPanelBattle gameState={gameState} gameActions={gameActions} />
     }
 }
 
