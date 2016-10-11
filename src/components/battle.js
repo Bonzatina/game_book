@@ -24,7 +24,7 @@ class Battle extends Component {
         }
        // console.log(fighting_char);
 
-        return <div className='battle'> <button className="chit_button"></button>
+        return <div className='battle'>
                 <div className='enemies'>
                     {enemies.map(function (enemy, index) {
                     return enemy.name !== char.name ? <div key={index}> <div className='enemy' >{enemy.name}<br/> Жизнь: {enemy.hits}</div>

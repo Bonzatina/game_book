@@ -33,6 +33,20 @@
     border: 0;
     border-radius: 3px;
     margin-right: 3px;
+    z-index: 999;
+}
+
+.chit_menu {
+    right: 0;
+    position: fixed;
+    background-color: grey;
+    width: 120px;
+    height: 220px;
+    opacity: 0.5;
+    border: 0;
+    border-radius: 3px;
+    margin-right: 3px;
+    padding: 5px;
 }
 
 .paragraph_area{
