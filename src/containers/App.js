@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Main_area from './main_area'
-import Title from ',/Title'
+import Title from './Title'
 import * as gameActions from '../actions/GameActions'
 
 //import styles from './main_area.css';
@@ -12,10 +12,12 @@ class App extends Component {
 
         const gameState = this.props.gameState;
         const gameActions  = this.props.gameActions;
-        return <Main_area
+        return gameState.start ? <Main_area
             gameState={gameState}
             gameActions={gameActions}
-        />
+        /> : <Title
+            gameState={gameState}
+            gameActions={gameActions}/>
 
     }
 }
