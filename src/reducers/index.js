@@ -15,6 +15,9 @@ const initialState = {
 
 export default function gameState(state = initialState, action) {
     switch (action.type) {
+        case 'START_GAME':
+            return { ...state, start: action.start};
+
         case 'SET_PARAGRAPH':
             return { ...state, p_id: action.p_id,  battle_is_over: action.battle_is_over};
 
