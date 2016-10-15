@@ -1,4 +1,10 @@
-export function setParagraph(p_id, battle_is_over) {
+export function startGame (start) {
+
+    return {
+        type: 'START_GAME',
+        start
+    }
+}export function setParagraph(p_id, battle_is_over) {
 
     return {
         type: 'SET_PARAGRAPH',
