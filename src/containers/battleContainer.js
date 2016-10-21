@@ -6,6 +6,11 @@ import set from 'lodash/set';
 
 class BattleContainer extends Component {
 
+    static contextTypes = {
+        gameState: React.PropTypes.object,
+        gameActions: React.PropTypes.object
+    };
+
     enemiesSortByQueue (enemies) {
         function compareQueue(enemyA, enemyB) {
             return enemyB.fight_queue - enemyA.fight_queue;
@@ -14,8 +19,10 @@ class BattleContainer extends Component {
     }
 
     onSetQueueBtnClick() {
+        const gameState = this.context.gameState;
+        const gameActions = this.context.gameActions;
 
-        let enemies = this.props.gameState.battle.enemies;
+        let enemies = gameState.battle.enemies;
 
         let enemiesWithSpeed = enemies.map(function (enemy) {
             return Object.assign({}, enemy, {fight_queue: enemy.speed + Math.floor(Math.random()*11 + 2)})
@@ -25,19 +32,22 @@ class BattleContainer extends Component {
 
         let battleWithQueue= {enemies: enemiesSortByQueue, current_queue: 0, current_round: 1 };
 
-        this.props.gameActions.setQueue(battleWithQueue);
+        gameActions.setQueue(battleWithQueue);
     }
 
     onGetKickBtnClick (e) {
 
+        const gameState = this.context.gameState;
+        const gameActions = this.context.gameActions;
+
         let enemy_index = e.target.value;
 
-        let fight_queue = this.props.gameState.battle.enemies;
+        let fight_queue = gameState.battle.enemies;
 
-        let current_queue = this.props.gameState.battle.current_queue;
+        let current_queue = gameState.battle.current_queue;
         let new_current_queue = current_queue < fight_queue.length-1 ? current_queue + 1 : 0;
 
-        let current_round = this.props.gameState.battle.current_round;
+        let current_round = gameState.battle.current_round;
         let new_current_round = current_queue == fight_queue.length-1 ? current_round + 1 : current_round;
 
        // console.log(fight_queue);
@@ -66,10 +76,13 @@ class BattleContainer extends Component {
 
         let nextStateOfBattle= {enemies: fight_queue, current_queue: new_current_queue, current_round: new_current_round};
 
-        fight_queue.length > 1 ? this.props.gameActions.getKick(nextStateOfBattle) : this.props.gameActions.battleIsOver(fight_queue[0].hits, undefined, true);
+        fight_queue.length > 1 ? gameActions.getKick(nextStateOfBattle) : gameActions.battleIsOver(fight_queue[0].hits, undefined, true);
     }
 
     render() {
+
+        const gameState = this.context.gameState;
+        const gameActions = this.context.gameActions;
 
 
         let setQueue = ::this.onSetQueueBtnClick;
@@ -78,8 +91,8 @@ class BattleContainer extends Component {
 
 
 
-        return <Battle gameState={this.props.gameState}
-                       gameActions={this.props.gameActions}
+        return <Battle gameState={gameState}
+                       gameActions={gameActions}
                        setQueue={setQueue}
                        getKick={getKick}
 

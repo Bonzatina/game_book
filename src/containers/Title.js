@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
+
 
 class Title extends Component {
     onStart () {
@@ -9,7 +11,13 @@ class Title extends Component {
         let gameState = this.props.gameState;
         let gameActions  = this.props.gameActions;
         let startGame = ::this.onStart;
-        return <div> <button onClick={startGame}> start</button> </div>
+        return <div>
+            <ul >
+                <li><Link to='/game'>Начать игру</Link></li>
+                {/*  <li><Link to='/list'>Продолжить игру</Link></li>   */ }
+                <li><Link to='/rules'>Правила</Link></li>
+             </ul>
+        </div>
     }
 }
 

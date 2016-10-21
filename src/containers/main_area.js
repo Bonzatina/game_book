@@ -7,22 +7,36 @@ class Main_area extends Component {
     state = {
         chit_menu_active: false,
     };
+
+    static contextTypes = {
+        gameState: React.PropTypes.object,
+        gameActions: React.PropTypes.object
+    };
+
+
+
     onParBtnClick(e) {
 
-        let p_id = this.props.gameState.p_id;
-        let battle_is_over  = this.props.gameState.battle_is_over;
+        const gameState = this.context.gameState;
+        const gameActions = this.context.gameActions;
+
+        let p_id = gameState.p_id;
+        let battle_is_over  = gameState.battle_is_over;
 
         let new_battle_is_over = typeof e.target.value !== 'undefined' ? undefined : battle_is_over;
         let new_p_id = typeof e.target.value !== 'undefined' ? e.target.value : p_id;
 
-        this.props.gameActions.setParagraph(new_p_id, new_battle_is_over)
+        gameActions.setParagraph(new_p_id, new_battle_is_over)
     }
 
     onStartBattleClick() {
 
-        let p_id = this.props.gameState.p_id;
+        const gameState = this.context.gameState;
+        const gameActions = this.context.gameActions;
 
-        let char = this.props.gameState.stats;
+        let p_id = gameState.p_id;
+
+        let char = gameState.stats;
         let new_enemies = Paragraphes[p_id].enemy.slice();
 
         new_enemies.push(char);
@@ -31,7 +45,7 @@ class Main_area extends Component {
             enemies: new_enemies
         };
 
-        this.props.gameActions.startBattle(battle);
+        gameActions.startBattle(battle);
     }
 
     onOpenChitMenuBtnClick() {
@@ -50,14 +64,17 @@ class Main_area extends Component {
     }
 
     render() {
-        let p_id = this.props.gameState.p_id;
 
-        let battle_is_over = this.props.gameState.battle_is_over;
-        let battle_is_set = this.props.gameState.battle;
+        const gameState = this.context.gameState;
+        const gameActions = this.context.gameActions;
 
-        let gameState = this.props.gameState;
-        let gameActions  = this.props.gameActions;
+        let p_id = gameState.p_id;
 
+        let battle_is_over = gameState.battle_is_over;
+        let battle_is_set = gameState.battle;
+
+
+console.log(gameState)
         let setNewP_id = ::this.onParBtnClick;
         let startBattle = ::this.onStartBattleClick;
         let openChitMenu = ::this.onOpenChitMenuBtnClick;
@@ -69,17 +86,17 @@ class Main_area extends Component {
                 <input type="text" name='par'  onChange={this.handleTitleField.bind(this)}/>
             </div> : null}
 
-            {typeof this.props.gameState.battle === 'undefined' ? <div className='paragraph_area'>
+            {typeof gameState.battle === 'undefined' ? <div className='paragraph_area'>
             <div onClick={setNewP_id}>{typeof battle_is_set === 'undefined' ? Paragraphes[p_id].p_text : null}</div>
 
             {typeof Paragraphes[p_id].battle !== 'undefined' &&
-            typeof this.props.gameState.battle === 'undefined' &&
+            typeof  gameState.battle === 'undefined' &&
             battle_is_over !== true ? <button onClick={startBattle}>Начать бой</button>  : null}
 
             <div onClick={setNewP_id}>{battle_is_over ? Paragraphes[p_id].p_text_afterBattle : null}</div>
 
         </div> : null}
-            {typeof this.props.gameState.battle !== 'undefined' ? <BattleContainer gameState={gameState} gameActions={gameActions}/> : null}
+            {typeof gameState.battle !== 'undefined' ? <BattleContainer /> : null}
             <RightPanelContainer gameState={gameState} gameActions={gameActions} />
             </div>
     }
