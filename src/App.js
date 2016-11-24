@@ -1,23 +1,13 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Main_area from './main_area'
-import Title from './Title'
-import * as gameActions from '../actions/GameActions'
-import { Route, IndexRoute } from 'react-router'
-import { Router, browserHistory } from 'react-router'
+
+import * as gameActions from './actions/GameActions'
+
 
 //import styles from './main_area.css';
 
-const routeConfig = [
-    { path: '/',
-        component: Title,
-    },
-    { path: '/game',
-        component: Main_area,
-    },
 
-];
 
 class App extends Component {
 
@@ -32,13 +22,10 @@ class App extends Component {
         };
     }
 
-
-
     render() {
 
         return (
-            <Router history={browserHistory} routes={routeConfig}>
-            </Router>
+        <div>{this.props.children}</div>
 
         )
     }

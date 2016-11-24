@@ -55,12 +55,15 @@ class Main_area extends Component {
     }
 
     handleTitleField(event) {
+        const gameState = this.context.gameState;
+        const gameActions = this.context.gameActions;
+
         let value = event.target.value;
 
-        let new_battle_is_over =  this.props.gameState.battle_is_over;
-        let new_p_id = value || this.props.gameState.p_id;
+        let new_battle_is_over =  gameState.battle_is_over;
+        let new_p_id = value || gameState.p_id;
 
-        this.props.gameActions.setParagraph(new_p_id, new_battle_is_over)
+        gameActions.setParagraph(new_p_id, new_battle_is_over)
     }
 
     render() {

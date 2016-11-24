@@ -2,15 +2,17 @@ import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import App from './containers/App'
+import { Router, browserHistory } from 'react-router'
+
 import configureStore from './store/configureStore'
+import { routes } from './routes'
 import './containers/main_area.css';
 
 const store = configureStore();
 
 render(
     <Provider store={store}>
-        <App />
+        <Router history={browserHistory} routes={routes} />
     </Provider>,
     document.getElementById('root')
 );

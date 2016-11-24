@@ -1,7 +1,7 @@
 
 
 const initialState = {
-    start: false,
+
     p_id: 1,
 
     stats: {
