@@ -10,6 +10,11 @@ import './containers/main_area.css';
 
 const store = configureStore();
 
+
+navigator.serviceWorker && navigator.serviceWorker.register('static/MyserviceWorker.js').then(function(registration) {
+    console.log('Excellent, registered with scope: ', registration.scope);
+});
+
 render(
     <Provider store={store}>
         <Router history={browserHistory} routes={routes} />

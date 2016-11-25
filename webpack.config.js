@@ -21,7 +21,7 @@ module.exports = {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new NpmInstallPlugin(),
-        new CopyWebpackPlugin([{from: 'src/manifest.json', to: 'manifest.json'}, {from: 'src/shape.png', to: 'shape.png'}])
+        new CopyWebpackPlugin([{from: 'src/manifest.json', to: 'manifest.json'}, {from: 'src/shape.png', to: 'shape.png'}, {from: 'src/MyserviceWorker.js', to: 'MyserviceWorker.js'}])
     ],
     module: {
         preLoaders: [
