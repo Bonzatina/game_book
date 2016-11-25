@@ -2,6 +2,9 @@
   "name": "game_book_2.0",
   "version": "2.0.0",
   "description": "readt+redux",
+  "repository": {
+    "private": true
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
