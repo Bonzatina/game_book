@@ -3,6 +3,7 @@ var webpack = require('webpack')
 var NpmInstallPlugin = require('npm-install-webpack-plugin')
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
@@ -19,7 +20,8 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new NpmInstallPlugin()
+        new NpmInstallPlugin(),
+        new CopyWebpackPlugin([{from: 'src/manifest.json', to: 'manifest.json'}])
     ],
     module: {
         preLoaders: [
