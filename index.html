@@ -11,8 +11,15 @@
 </div>
 <script src="/bundle.js"></script>
 
-<script>navigator.serviceWorker && navigator.serviceWorker.register('/MyserviceWorker.js').then(function(registration) {
+<script>
+    function subscribe(serviceWorkerReg) {
+        serviceWorkerReg.pushManager.subscribe({userVisibleOnly: true})
+    };
+
+    navigator.serviceWorker && navigator.serviceWorker.register('/MyserviceWorker.js').then(function(registration) {
+        subscribe(registration)
     console.log('Excellent, registered with scope: ', registration.scope);
+
 });</script>
 </body>
 </html>
