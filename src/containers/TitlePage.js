@@ -11,6 +11,20 @@ class Title extends Component {
                 <li><Link to='/game'>Начать игру</Link></li>
                 {/*  <li><Link to='/list'>Продолжить игру</Link></li>   */ }
                 <li><Link to='/rules'>Правила</Link></li>
+                <button onClick={function() {fetch('*', {
+                    method: 'get',
+                    headers: {
+                        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                    },
+
+                })    .then(function (data) {
+                    console.log('Request succeeded with JSON response', data);
+                })
+                    .catch(function (error) {
+                        console.log('Request failed', error);
+                    })}
+
+                }>ffgfg</button>
              </ul>
         </div>
     }
