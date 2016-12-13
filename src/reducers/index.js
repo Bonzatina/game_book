@@ -1,5 +1,6 @@
 
 
+
 const initialState = {
 
     p_id: 1,
@@ -14,7 +15,9 @@ const initialState = {
     }
 };
 
-export default function gameState(state = initialState, action) {
+const persistedState = localStorage.getItem('reduxState') ? JSON.parse(localStorage.getItem('reduxState')) : initialState;
+
+export default function gameState(state = persistedState, action) {
     switch (action.type) {
         case 'START_GAME':
             return { ...state, start: action.start};

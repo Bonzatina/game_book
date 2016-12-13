@@ -15,7 +15,8 @@
     "strict": 0,
     "no-underscore-dangle": 0,
     "no-use-before-define": 0,
-    "eol-last": 0
+    "eol-last": 0,
+    "no-unused-vars": [0, { "vars": "all", "args": "after-used" }]
 
 /*    "react/jsx-no-undef": 1,
     "react/jsx-uses-react": 1,

@@ -10,8 +10,14 @@ import './containers/main_area.css';
 
 const store = configureStore();
 
+store.subscribe(()=>{
+    localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+})
 
 
+// navigator.serviceWorker && navigator.serviceWorker.register('static/MyserviceWorker.js').then(function(registration) {
+//     console.log('Excellent, registered with scope: ', registration.scope);
+// });
 
 render(
     <Provider store={store}>
